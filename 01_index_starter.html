@@ -101,6 +101,18 @@
     legend.addTo(mymap);
 	
 	
+	var title = L.control({position: 'topright'});
+    
+    title.onAdd = function (mymap) {
+        var div = L.DomUtil.create('div', 'info legend');
+        div.innerHTML = '<h2>Census by Community 2019</h2>';
+        
+        return div;
+        
+    };
+    
+    title.addTo(mymap)
+	
     // ----------- BEGIN SECTION (Markers, circles, polygons, & popups) ------------- 
     // Enable the code below to show additional elements that can be added to your map. 
     
