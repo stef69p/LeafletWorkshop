@@ -1,0 +1,64 @@
+    <!-- **** #1: ADD THIS SECTION after the Leaflet stylesheet in the <head> **** -->
+        
+    <!-- External CSS file that controls the legend styles -->
+    <link rel="stylesheet" href="styles.css"/>
+    
+
+
+
+
+
+
+    <script>
+    
+    
+    // **** #2: ADD THIS SECTION after polyStyle() in the <body> ****
+    
+    // Add legend - modified from https://leafletjs.com/examples/choropleth/ 
+    
+    var legend = L.control({position: 'bottomleft'});
+    
+    legend.onAdd = function (mymap) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [1, 2500, 5000, 7000, 10000, 15000],
+        labels = [];
+
+    div.innerHTML ='<h2>Census by Community 2019</h2>' + '<br>' + '<h4>Number of residents per community</h4>';
+        
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + colourBreaks(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+    };
+
+    legend.addTo(mymap);
+    
+
+        
+    /*
+    
+    // **** This is an optional section that places a title in the right-hand corner ****
+   
+    var title = L.control({position: 'topright'});
+    
+    title.onAdd = function (mymap) {
+        var div = L.DomUtil.create('div', 'info legend');
+        div.innerHTML = '<h2>Census by Community 2019</h2>';
+        
+        return div;
+        
+    };
+    
+    title.addTo(mymap)
+    
+    */
+    
+    
+    
+    
+    </script>
