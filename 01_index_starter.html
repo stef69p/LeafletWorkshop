@@ -54,6 +54,29 @@
 	});	
     
 	
+ // Define colours based on data ranges (create choropleth map)
+    function colourBreaks(d) {
+        return d > 15000 ? '#b10026' :
+                d > 10000 ? '#e31a1c' :
+                d > 7000 ? '#fc4e2a' :
+                d > 5000 ? '#fd8d3c' :
+                d > 2500 ? '#feb24c' :
+                d > 1 ? '#fed976' :
+                        '#525252';        
+    }
+    
+    	
+	// Style polygons and control opacity
+	function polyStyle(feature) {
+		return {
+			weight: 1,
+			fillColor: colourBreaks(feature.properties.res_cnt),
+			color: '#FFFFFF',
+            opacity: 1,
+            fillOpacity: 0.75
+		};
+	}
+	
     // ----------- BEGIN SECTION (Markers, circles, polygons, & popups) ------------- 
     // Enable the code below to show additional elements that can be added to your map. 
     
