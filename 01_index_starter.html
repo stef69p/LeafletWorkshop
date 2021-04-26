@@ -44,8 +44,16 @@
 		zoomOffset: -1
 	}).addTo(mymap);
     
+	
+    // loading GeoJSON file - https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/
+	$.getJSON("Census_by_Community_2019.geojson",function(data){
+		// L.geoJson function is used to parse geojson file and load on to map
+		L.geoJson(data, {
+			style: polyStyle
+		}).addTo(mymap);
+	});	
     
-    
+	
     // ----------- BEGIN SECTION (Markers, circles, polygons, & popups) ------------- 
     // Enable the code below to show additional elements that can be added to your map. 
     
